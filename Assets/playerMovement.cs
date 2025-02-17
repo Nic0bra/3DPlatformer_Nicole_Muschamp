@@ -6,6 +6,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float speed;
     Rigidbody rb;
     Vector3 movement;
+    [SerializeField] float jumpForce;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -13,6 +15,8 @@ public class PlayerMovement : MonoBehaviour
         //Get the player via its rigidbody
         rb = GetComponent<Rigidbody>();
     }
+
+
 
     // Update is called once per frame
     void Update()
@@ -24,7 +28,13 @@ public class PlayerMovement : MonoBehaviour
         //Set movement variable
         movement = new Vector3(xInput, 0, zInput) * speed * Time.deltaTime;
         movement.y = rb.linearVelocity.y;
+
+        //Add jumping with spacebar
+        if (Input.GetButtonDown("Jump"))
+            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
     }
+
+
 
     //Update for physics
     private void FixedUpdate()
