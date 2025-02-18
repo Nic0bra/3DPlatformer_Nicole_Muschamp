@@ -34,7 +34,7 @@ public class PlayerMovement : MonoBehaviour
             movement.y = 0;
 
         //Check if grouned
-        grounded = Physics.Raycast(transform.position, Vector3.down);
+        grounded = Physics.Raycast(transform.position + Vector3.down, Vector3.down, 1);
 
         //Make that jawn jump
         if (Input.GetButtonDown("Jump") && grounded)
