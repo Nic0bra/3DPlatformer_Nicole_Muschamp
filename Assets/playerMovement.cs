@@ -3,20 +3,17 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     //Initialize variables
-    [SerializeField] float speed;
-    Rigidbody rb;
+    [SerializeField] float speed = 1;
+    [SerializeField] float jumpForce = 1;
+    [SerializeField] float gravity = -1;
     Vector3 movement;
-    [SerializeField] float jumpForce;
-
+    CharacterController controller;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        //Get the player via its rigidbody
-        rb = GetComponent<Rigidbody>();
+        controller = GetComponent<CharacterController>();
     }
-
-
 
     // Update is called once per frame
     void Update()
@@ -25,21 +22,28 @@ public class PlayerMovement : MonoBehaviour
         float xInput = Input.GetAxis("Horizontal");
         float zInput = Input.GetAxis("Vertical");
 
-        //Set movement variable
-        movement = new Vector3(xInput, 0, zInput) * speed * Time.deltaTime;
-        movement.y = rb.linearVelocity.y;
+        movement.x = xInput * speed;
+        movement.z = zInput * speed;
 
-        //Add jumping with spacebar
+        //Set gravity
+        movement.y += gravity * Time.deltaTime;
+
+        //Set gravity right while grounded
+        if (controller.isGrounded)
+            movement.y = 0;
+
+        //Make that jawn jump
         if (Input.GetButtonDown("Jump"))
-            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+        {
+            movement.y = jumpForce;
+        }
+
+        controller.Move(movement * Time.deltaTime);
     }
 
-
-
-    //Update for physics
-    private void FixedUpdate()
+//Check for collision
+private void OnCollisionEnter2D(Collision2D collision)
     {
-        //Apply movement
-        rb.linearVelocity = movement;
+
     }
 }
