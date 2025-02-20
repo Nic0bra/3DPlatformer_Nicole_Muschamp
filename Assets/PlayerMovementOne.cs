@@ -1,14 +1,16 @@
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovementOne : MonoBehaviour
 {
     //Initialize variables
     [SerializeField] float speed = 1;
     [SerializeField] float jumpForce = 1;
     [SerializeField] float gravity = -1;
+    [SerializeField] Transform playerCam;
     Vector3 movement;
     CharacterController controller;
     bool grounded;
+    
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -23,8 +25,26 @@ public class PlayerMovement : MonoBehaviour
         float xInput = Input.GetAxis("Horizontal");
         float zInput = Input.GetAxis("Vertical");
 
-        movement.x = xInput * speed;
-        movement.z = zInput * speed;
+        Vector3 camForward = playerCam.forward;
+        Vector3 camRight = playerCam.forward;
+
+        camForward.y = 0;
+        camForward.Normalize();
+
+        camRight.y = 0;
+        camRight.Normalize();
+
+        Vector3 forwardRelMovement = zInput * camForward;
+        Vector3 rightRelMovement = xInput * camRight;
+        
+        Vector3 relativeMovement = (forwardRelMovement + rightRelMovement) * speed;
+
+        //Change the way they are facing
+        if (xInput != 0 && zInput != 0)
+            transform.forward = relativeMovement;
+
+        relativeMovement.y = movement.y;
+        movement = relativeMovement;
 
         //Set gravity
         movement.y += gravity * Time.deltaTime;
@@ -43,10 +63,6 @@ public class PlayerMovement : MonoBehaviour
         }
 
         controller.Move(movement * Time.deltaTime);
-
-        //Change the way they are facing
-        if(xInput != 0 && zInput != 0)
-            transform.forward = new Vector3(xInput, 0, zInput);
     }
 
 //Check for collision
