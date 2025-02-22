@@ -1,11 +1,11 @@
 using UnityEngine;
 
-public class PlayerMovementTwo : MonoBehaviour
+public class Player : MonoBehaviour
 {
     //Initialize variables
-    [SerializeField] float speed = 1;
-    [SerializeField] float jumpForce = 1;
-    [SerializeField] float gravity = -1;
+    [SerializeField] float speed = 5;
+    [SerializeField] float jumpForce = 15;
+    [SerializeField] float gravity = -30;
     Vector3 movement;
     CharacterController controller;
     bool grounded;
