@@ -48,10 +48,13 @@ public class Player : MonoBehaviour
         //Check if grouned
         grounded = Physics.Raycast(transform.position + new Vector3( 0, -1, 0), Vector3.down, 1);
 
+        bigVegasAnimator.SetBool("onGround", grounded);
+
         //Make that jawn jump
         if (Input.GetButtonDown("Jump") && grounded)
         {
             movement.y = jumpForce;
+            bigVegasAnimator.SetTrigger("jump");
         }
 
         controller.Move(movement * Time.deltaTime);

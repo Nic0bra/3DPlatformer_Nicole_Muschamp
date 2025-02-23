@@ -237,7 +237,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 44420254}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.22764513, y: -0.04005266, z: 0.00937201, w: 0.97287494}
+  m_LocalRotation: {x: 0.2276451, y: -0.040057357, z: 0.009373107, w: 0.97287476}
   m_LocalPosition: {x: 0, y: 6.85, z: -9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -748,8 +748,8 @@ Transform:
   m_GameObject: {fileID: 248085312}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 21.2641, y: 0.9287, z: -10.0271}
-  m_LocalScale: {x: 16.389133, y: 3.9929857, z: 44.937504}
+  m_LocalPosition: {x: 21.2641, y: -0.4733, z: -10.0271}
+  m_LocalScale: {x: 16.389133, y: 1.1891111, z: 44.937504}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -841,7 +841,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.22764516, y: -0.040052664, z: 0.009372011, w: 0.97287494}
+  m_LocalRotation: {x: 0.22764514, y: -0.040057365, z: 0.009373111, w: 0.97287476}
   m_LocalPosition: {x: 0, y: 6.85, z: -9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1304,8 +1304,8 @@ Transform:
   m_GameObject: {fileID: 1116853910}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -13.66, y: 0.9287, z: -1.7824}
-  m_LocalScale: {x: 10.155854, y: 3.9929857, z: 6.882965}
+  m_LocalPosition: {x: -13.66, y: -0.4548, z: -1.7824}
+  m_LocalScale: {x: 10.155854, y: 1.2258466, z: 6.882965}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -1765,7 +1765,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f778b6133f65154e99312915440384f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 10
   jumpForce: 15
   gravity: -30
   bigVegasAnimator: {fileID: 1851629214}
