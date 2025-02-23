@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
     Vector3 movement;
     CharacterController controller;
     bool grounded;
+    [SerializeField] Animator bigVegasAnimator;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -23,6 +24,17 @@ public class Player : MonoBehaviour
         float xInput = Input.GetAxis("Horizontal");
         float zInput = Input.GetAxis("Vertical");
 
+
+        if (xInput != 0 || zInput != 0)
+        {
+            bigVegasAnimator.SetBool("isJogging", true);
+        }
+        else
+        {
+            bigVegasAnimator.SetBool("isJogging", false);
+        }
+
+
         movement.x = xInput * speed;
         movement.z = zInput * speed;
 
@@ -34,7 +46,7 @@ public class Player : MonoBehaviour
             movement.y = 0;
 
         //Check if grouned
-        grounded = Physics.Raycast(transform.position + Vector3.down, Vector3.down, 1);
+        grounded = Physics.Raycast(transform.position, Vector3.down, 1);
 
         //Make that jawn jump
         if (Input.GetButtonDown("Jump") && grounded)
