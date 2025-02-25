@@ -3,19 +3,28 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     //Initialize variables
-    [SerializeField] float speed = 5;
-    [SerializeField] float jumpForce = 15;
-    [SerializeField] float gravity = -30;
+    float speed;
+    float jumpForce;
+    float gravity;
+    float health;
     Vector3 movement;
     CharacterController controller;
     bool grounded;
     [SerializeField] Animator bigVegasAnimator;
+    [SerializeField] PlayerStats bigVegasStats;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         controller = GetComponent<CharacterController>();
+
+        speed = bigVegasStats.speed;
+        jumpForce = bigVegasStats.jumpForce;
+        gravity = bigVegasStats.gravity;
+        health = bigVegasStats.health;
     }
+
 
     // Update is called once per frame
     void Update()
@@ -36,7 +45,7 @@ public class Player : MonoBehaviour
         }
 
 
-        //set the x and z input with speed
+        //Set the x and z input with speed
         movement.x = xInput * speed;
         movement.z = zInput * speed;
 
@@ -53,11 +62,11 @@ public class Player : MonoBehaviour
         //Hyde is cool
 
 
-        //Check if grouned
+        //Check if grounded
         grounded = Physics.Raycast(transform.position + new Vector3( 0, -1, 0), Vector3.down, 1);
 
 
-        //Make animation react to grounded
+        //Make grounded animation
         bigVegasAnimator.SetBool("onGround", grounded);
 
 
@@ -73,14 +82,15 @@ public class Player : MonoBehaviour
         controller.Move(movement * Time.deltaTime);
 
 
-        //Change the way they are facing
+        //Change the way the character faces
         if (xInput != 0 || zInput != 0)
             transform.forward = new Vector3(xInput, 0, zInput);
     }
 
 
 
-    //Check for collision
+
+    //Check if that jawn hit something
     private void OnCollisionEnter2D(Collision2D collision)
     {
 

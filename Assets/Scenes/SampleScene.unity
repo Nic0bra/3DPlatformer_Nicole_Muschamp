@@ -1765,10 +1765,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f778b6133f65154e99312915440384f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
-  jumpForce: 15
-  gravity: -30
   bigVegasAnimator: {fileID: 1851629214}
+  bigVegasStats: {fileID: 11400000, guid: 2efcda9740bbf324f9833f971402dfbc, type: 2}
 --- !u!95 &1851629214 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: 47510dd5271c9aa44b44a817e50d04b5, type: 3}
