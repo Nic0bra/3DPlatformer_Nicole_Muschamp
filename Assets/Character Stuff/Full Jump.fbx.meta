@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: f3bd1f29469187549b9a6c4ab7aa4222
+guid: 3e18206d40c5d4b488757729b7f81636
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -17,11 +17,7 @@ ModelImporter:
     removeConstantScaleCurves: 0
     motionNodeName: 
     animationImportErrors: 
-    animationImportWarnings: "\nClip 'mixamo.com' has import animation warnings that
-      might lower retargeting quality:\nNote: Activate translation DOF on avatar
-      to improve retargeting quality.\n\t'mixamorig:Spine1' is inbetween humanoid
-      transforms and has rotation animation that will be discarded.\n\t'mixamorig:Spine2'
-      is inbetween humanoid transforms and has rotation animation that will be discarded.\n"
+    animationImportWarnings: 
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
@@ -35,11 +31,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Jump
+      name: Full Jump
       takeName: mixamo.com
       internalID: -203655887218126122
       firstFrame: 0
-      lastFrame: 38
+      lastFrame: 80
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
