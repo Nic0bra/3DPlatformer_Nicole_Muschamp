@@ -25,6 +25,7 @@ public class Player : MonoBehaviour
         float zInput = Input.GetAxis("Vertical");
 
 
+        //Make jog animation
         if (xInput != 0 || zInput != 0)
         {
             bigVegasAnimator.SetBool("isJogging", true);
@@ -35,20 +36,30 @@ public class Player : MonoBehaviour
         }
 
 
+        //set the x and z input with speed
         movement.x = xInput * speed;
         movement.z = zInput * speed;
 
+
         //Set gravity
         movement.y += gravity * Time.deltaTime;
+
 
         //Set gravity right while grounded
         if (controller.isGrounded)
             movement.y = 0;
 
+
+        //Hyde is cool
+
+
         //Check if grouned
         grounded = Physics.Raycast(transform.position + new Vector3( 0, -1, 0), Vector3.down, 1);
 
+
+        //Make animation react to grounded
         bigVegasAnimator.SetBool("onGround", grounded);
+
 
         //Make that jawn jump
         if (Input.GetButtonDown("Jump") && grounded)
@@ -57,12 +68,17 @@ public class Player : MonoBehaviour
             bigVegasAnimator.SetTrigger("jump");
         }
 
+
+        //Have controller move based on movement and delta time
         controller.Move(movement * Time.deltaTime);
 
+
         //Change the way they are facing
-        if (xInput != 0 && zInput != 0)
+        if (xInput != 0 || zInput != 0)
             transform.forward = new Vector3(xInput, 0, zInput);
     }
+
+
 
     //Check for collision
     private void OnCollisionEnter2D(Collision2D collision)
@@ -70,3 +86,4 @@ public class Player : MonoBehaviour
 
     }
 }
+// skibidi toilets are cool like brainrot :]
