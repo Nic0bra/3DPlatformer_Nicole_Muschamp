@@ -4,9 +4,9 @@ using UnityEngine;
 public class PlayerStats : ScriptableObject
 {
     //Initalize Variables
-    public float health;
-    public float maxHealth;
-    public float speed;
-    public float jumpForce;
-    public float gravity;
+    public float health = 100f;
+    public float maxHealth = 100f;
+    public float speed = 5f;
+    public float jumpForce = 15f;
+    public float gravity = -30;
 }

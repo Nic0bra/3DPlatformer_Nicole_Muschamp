@@ -661,7 +661,7 @@ GameObject:
   - component: {fileID: 248085317}
   m_Layer: 0
   m_Name: Fire  Cube Two
-  m_TagString: Untagged
+  m_TagString: FireCube
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -767,6 +767,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1174e1ced658e146b42b10e142b80e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 15
 --- !u!1 &330585543
 GameObject:
   m_ObjectHideFlags: 0
@@ -1230,7 +1231,7 @@ GameObject:
   - component: {fileID: 1116853915}
   m_Layer: 0
   m_Name: Fire  Cube One
-  m_TagString: Untagged
+  m_TagString: FireCube
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1336,6 +1337,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1174e1ced658e146b42b10e142b80e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 15
 --- !u!1 &1169039998
 GameObject:
   m_ObjectHideFlags: 0
@@ -1839,7 +1841,7 @@ GameObject:
   - component: {fileID: 1682548183}
   m_Layer: 0
   m_Name: Goal Cube
-  m_TagString: Untagged
+  m_TagString: Goal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

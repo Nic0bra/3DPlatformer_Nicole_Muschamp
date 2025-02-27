@@ -7,6 +7,7 @@ public class Player : MonoBehaviour
     float jumpForce;
     float gravity;
     float health;
+    float maxHealth;
     Vector3 movement;
     CharacterController controller;
     bool grounded;
@@ -23,6 +24,7 @@ public class Player : MonoBehaviour
         jumpForce = bigVegasStats.jumpForce;
         gravity = bigVegasStats.gravity;
         health = bigVegasStats.health;
+        maxHealth = bigVegasStats.maxHealth;
     }
 
 
@@ -89,27 +91,28 @@ public class Player : MonoBehaviour
 
 
 
-
-    //Check if that jawn stepped on fire cube
-    private void OnCollisionEnter(Collision collision)
+    //Check if that jawn collided
+    private void OnControllerColliderHit(ControllerColliderHit hit)
     {
-        //Get the game objects
-        FireCube fireCube = collision.gameObject.GetComponent<FireCube>();
-        Goal goal = collision.gameObject.GetComponent<Goal>();
-
-        //Reduce health if player on fire cube
-        if (fireCube != null)
+        //Check if it hit the fire cube
+        if (hit.gameObject.CompareTag("FireCube"))
         {
-            health -= fireCube.damage;
-                
-            //check if player died
-            if (health <= 0)
-            {
+            //Take away health
+            bigVegasStats.health -= 10f;
 
+            //Check if player has health left
+            if(bigVegasStats.health <= 0)
+            {
+                //Call Game Over Canvas
+                GameLogic.GameOver();
             }
         }
-
-        //Check if player reached goal
+        //Check if it hit the goal
+        else if (hit.gameObject.CompareTag("Goal"))
+        {
+            //Call Game Win Canvas
+            GameLogic.WinGame();
+        }
     }
 }
 // skibidi toilets are cool like brainrot :]
