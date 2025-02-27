@@ -90,10 +90,26 @@ public class Player : MonoBehaviour
 
 
 
-    //Check if that jawn hit something
-    private void OnCollisionEnter2D(Collision2D collision)
+    //Check if that jawn stepped on fire cube
+    private void OnCollisionEnter(Collision collision)
     {
+        //Get the game objects
+        FireCube fireCube = collision.gameObject.GetComponent<FireCube>();
+        Goal goal = collision.gameObject.GetComponent<Goal>();
 
+        //Reduce health if player on fire cube
+        if (fireCube != null)
+        {
+            health -= fireCube.damage;
+                
+            //check if player died
+            if (health <= 0)
+            {
+
+            }
+        }
+
+        //Check if player reached goal
     }
 }
 // skibidi toilets are cool like brainrot :]
