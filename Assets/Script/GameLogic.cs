@@ -4,10 +4,10 @@ using UnityEngine.SceneManagement;
 public class GameLogic : MonoBehaviour
 {
     //Initialize variables
-    [SerializeField] startCanvas;
-    [SerializeField] gameCanvas;
-    [SerializeField] winCanvas;
-    [SerializeField] gameOverCanvas;
+    [SerializeField] GameObject startCanvas;
+    [SerializeField] GameObject gameCanvas;
+    [SerializeField] GameObject winCanvas;
+    [SerializeField] GameObject gameOverCanvas;
     [SerializeField] PlayerStats bigVegasStats;
     [SerializeField] GameObject player;
 
