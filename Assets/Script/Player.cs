@@ -13,6 +13,7 @@ public class Player : MonoBehaviour
     bool grounded;
     [SerializeField] Animator bigVegasAnimator;
     [SerializeField] PlayerStats bigVegasStats;
+    [SerializeField] GameLogic gameLogic;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -104,14 +105,14 @@ public class Player : MonoBehaviour
             if(bigVegasStats.health <= 0)
             {
                 //Call Game Over Canvas
-                GameLogic.GameOver();
+                gameLogic.GameOver();
             }
         }
         //Check if it hit the goal
         else if (hit.gameObject.CompareTag("Goal"))
         {
             //Call Game Win Canvas
-            GameLogic.WinGame();
+            gameLogic.WinGame();
         }
     }
 }
