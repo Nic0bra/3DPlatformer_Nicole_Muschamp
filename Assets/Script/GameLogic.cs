@@ -9,6 +9,7 @@ public class GameLogic : MonoBehaviour
     [SerializeField] winCanvas;
     [SerializeField] gameOverCanvas;
     [SerializeField] PlayerStats bigVegasStats;
+    [SerializeField] GameObject player;
 
     //Start the game
     public void StartGame()
@@ -21,6 +22,9 @@ public class GameLogic : MonoBehaviour
 
         //Reset health for new game
         bigVegasStats.health = bigVegasStats.maxHealth;
+
+        //Set player position
+        player.transform.position = player.transform.position;
     }
 
     //End game with a win
@@ -50,5 +54,11 @@ public class GameLogic : MonoBehaviour
         gameCanvas.SetActive(false);
         winCanvas.SetActive(false);
         gameOverCanvas.SetActive(false);
+
+        //Reset health for new game
+        bigVegasStats.health = bigVegasStats.maxHealth;
+
+        //Set player position
+        player.transform.position = player.transform.position;
     }
 }
