@@ -3,6 +3,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     //Initialize variables
+    public Vector3 startPosition;
     float speed;
     float jumpForce;
     float gravity;
@@ -22,7 +23,15 @@ public class Player : MonoBehaviour
         //Load start screen
         gameLogic.startCanvas.SetActive(true);
 
+        //Start Music
+        gameLogic.PlayMusic();
+
+
         controller = GetComponent<CharacterController>();
+
+        startPosition = new Vector3(0f, 1f, 0f);
+
+        ResetPosition();
 
         speed = bigVegasStats.speed;
         jumpForce = bigVegasStats.jumpForce;
@@ -67,9 +76,8 @@ public class Player : MonoBehaviour
 
         //Hyde is cool
 
-
         //Check if grounded
-        grounded = Physics.Raycast(transform.position + new Vector3( 0, -1, 0), Vector3.down, 1);
+        grounded = Physics.Raycast(transform.position + new Vector3(0, -1, 0), Vector3.down, 1);
 
 
         //Make grounded animation
@@ -102,10 +110,10 @@ public class Player : MonoBehaviour
         if (hit.gameObject.CompareTag("FireCube"))
         {
             //Take away health
-            bigVegasStats.health -= 10f;
+            bigVegasStats.health -= 1f;
 
             //Check if player has health left
-            if(bigVegasStats.health <= 0)
+            if (bigVegasStats.health <= 0)
             {
                 //Call Game Over Canvas
                 gameLogic.GameOver();
@@ -117,6 +125,19 @@ public class Player : MonoBehaviour
             //Call Game Win Canvas
             gameLogic.WinGame();
         }
+    }
+
+    //Reset Player Position
+    public void ResetPosition()
+    {
+        //Turn off Character Control to move positions
+        controller.enabled = false;
+
+        //Move characrter to start position
+        transform.position = startPosition;
+
+        //Give character control back
+        controller.enabled = true;
     }
 }
 // skibidi toilets are cool like brainrot :]

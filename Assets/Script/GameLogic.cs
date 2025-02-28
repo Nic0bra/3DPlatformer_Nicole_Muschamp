@@ -9,7 +9,8 @@ public class GameLogic : MonoBehaviour
     [SerializeField] GameObject winCanvas;
     [SerializeField] GameObject gameOverCanvas;
     [SerializeField] PlayerStats bigVegasStats;
-    [SerializeField] GameObject player;
+    public GameObject player;
+    public AudioSource gameMusic;
 
     //Start the game
     public void StartGame()
@@ -24,7 +25,7 @@ public class GameLogic : MonoBehaviour
         bigVegasStats.health = bigVegasStats.maxHealth;
 
         //Set player position
-        player.transform.position = player.transform.position;
+        player.GetComponent<Player>().ResetPosition();
     }
 
     //End game with a win
@@ -54,12 +55,25 @@ public class GameLogic : MonoBehaviour
         bigVegasStats.health = bigVegasStats.maxHealth;
 
         //Set player position
-        player.transform.position = player.transform.position;
+        player.GetComponent<Player>().ResetPosition();
 
         //Go back to start canvas
         startCanvas.SetActive(true);
         gameCanvas.SetActive(false);
         winCanvas.SetActive(false);
         gameOverCanvas.SetActive(false);
+    }
+
+    //Start Music on open screen
+    public void PlayMusic()
+    {
+        gameMusic.Play();
+    }
+   
+
+    //End audio when start is pushed
+    public void StopMusic()
+    {
+        gameMusic.Stop();
     }
 }
