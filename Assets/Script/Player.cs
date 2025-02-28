@@ -15,6 +15,7 @@ public class Player : MonoBehaviour
     [SerializeField] Animator bigVegasAnimator;
     [SerializeField] PlayerStats bigVegasStats;
     [SerializeField] GameLogic gameLogic;
+    public AudioSource jumpSound;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -87,6 +88,7 @@ public class Player : MonoBehaviour
         //Make that jawn jump
         if (Input.GetButtonDown("Jump") && grounded)
         {
+            jumpSound.Play();
             movement.y = jumpForce;
             bigVegasAnimator.SetTrigger("jump");
         }
