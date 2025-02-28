@@ -27,13 +27,16 @@ public class Player : MonoBehaviour
         //Start Music
         gameLogic.PlayMusic();
 
-
+        //Access character controller component
         controller = GetComponent<CharacterController>();
 
+        //Set start position
         startPosition = new Vector3(0f, 1f, 0f);
 
+        //Put the player in the start position
         ResetPosition();
 
+        //Set variables according to PlayerStats script
         speed = bigVegasStats.speed;
         jumpForce = bigVegasStats.jumpForce;
         gravity = bigVegasStats.gravity;
@@ -45,12 +48,12 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Input
+        //Get user input
         float xInput = Input.GetAxis("Horizontal");
         float zInput = Input.GetAxis("Vertical");
 
 
-        //Make jog animation
+        //Make jog animation according to boolean value
         if (xInput != 0 || zInput != 0)
         {
             bigVegasAnimator.SetBool("isJogging", true);
@@ -75,8 +78,6 @@ public class Player : MonoBehaviour
             movement.y = 0;
 
 
-        //Hyde is cool
-
         //Check if grounded
         grounded = Physics.Raycast(transform.position + new Vector3(0, -1, 0), Vector3.down, 1);
 
@@ -85,9 +86,10 @@ public class Player : MonoBehaviour
         bigVegasAnimator.SetBool("onGround", grounded);
 
 
-        //Make that jawn jump
+        //Make character jump
         if (Input.GetButtonDown("Jump") && grounded)
         {
+            //play jump sound apply force and animation
             jumpSound.Play();
             movement.y = jumpForce;
             bigVegasAnimator.SetTrigger("jump");
@@ -142,4 +144,3 @@ public class Player : MonoBehaviour
         controller.enabled = true;
     }
 }
-// skibidi toilets are cool like brainrot :]
