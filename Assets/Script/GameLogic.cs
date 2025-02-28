@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 public class GameLogic : MonoBehaviour
 {
     //Initialize variables
-    [SerializeField] GameObject startCanvas;
+    public GameObject startCanvas;
     [SerializeField] GameObject gameCanvas;
     [SerializeField] GameObject winCanvas;
     [SerializeField] GameObject gameOverCanvas;
@@ -50,15 +50,16 @@ public class GameLogic : MonoBehaviour
     //Restart the game
     public void RestartGame()
     {
-        startCanvas.SetActive(true);
-        gameCanvas.SetActive(false);
-        winCanvas.SetActive(false);
-        gameOverCanvas.SetActive(false);
-
         //Reset health for new game
         bigVegasStats.health = bigVegasStats.maxHealth;
 
         //Set player position
         player.transform.position = player.transform.position;
+
+        //Go back to start canvas
+        startCanvas.SetActive(true);
+        gameCanvas.SetActive(false);
+        winCanvas.SetActive(false);
+        gameOverCanvas.SetActive(false);
     }
 }
